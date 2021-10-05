@@ -1,0 +1,25 @@
+# Docker Compose version
+version: '3.8'
+
+# Application components
+services:
+  # REST API
+  rest-api:
+    build: ./api
+    container_name: rest-api
+    ports:
+      - "8000:8000"
+  
+  # Web frontend
+  web-frontend:
+    build: ./web
+    env_file: ./web/.env
+    container_name: web-frontend
+    # ONLY FOR DEV
+    command: npm run dev --host 0.0.0.0
+    ports:
+      - "5000:5000"
+
+networks:
+  default:
+    driver: bridge
