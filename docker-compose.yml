@@ -1,0 +1,9 @@
+# Docker Compose version
+version: '3.8'
+
+# Application components
+services:
+  # REST API
+  rest-api:
+    build: ./api
+    container_name: rest-api
